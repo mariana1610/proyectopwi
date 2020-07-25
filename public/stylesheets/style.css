@@ -79,6 +79,19 @@ body img {
     -ms-border-radius: 4px;
 }
 
+.productoimg {
+    height: 394px;
+    width: 328px;
+}
+
+.productorow {
+    display: flex;
+}
+
+.productocolumn {
+    flex: 33.33%;
+    padding: 5px;
+}
 
 /* navigation */
 
@@ -899,7 +912,7 @@ h3.tittle-w3ls.two {
 .team-info h3 {
     font-size: 1.2em;
     color: #1b1b1b;
-    margin: 0 0 0.5em 0;
+    margin: 0.5em 0 0.5em 0;
 }
 
 .team-info h3 a {

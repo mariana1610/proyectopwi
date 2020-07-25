@@ -1,0 +1,117 @@
+<head>
+    <title>BMR Cakes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="tortas, contacto, pasteleria, panaderia, artesanal, bmr, bmr cakes, buenos aires, argentina, comprar" />
+    <script>
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+
+    </script>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+
+    <link href="css/font-awesome.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!--/home -->
+<div id="home" class="inner-w3pvt-page">
+    <div class="overlay-innerpage">
+        
+<!--/top-nav -->
+<div class="top_w3pvt_main container">
+
+<!--/header -->
+<header class="nav_w3pvt text-center ">
+<!-- nav -->
+    <nav class="wthree-w3ls">
+        <div id="logo">
+            <h1> <a class="navbar-brand1 px-0 mx-0" style="text-transform:capitalize" href="home">Bmr Cakes
+                </a>
+            </h1>
+        </div>
+
+        <label for="drop" class="toggle">Menu</label>
+            <input type="checkbox" id="drop" />
+            <ul class="menu mr-auto">
+                <li class="active"><a href="home">Home</a></li>
+                <li><a href="/about">Sobre mí</a></li>
+                <li>
+                    <label for="drop-2" class="toggle toggle-2">Productos <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
+                    <a href="productos">Productos  <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                    <input type="checkbox" id="drop-2" />
+                    <ul>
+                        <li><a href="/tortas" class="drop-text">Tortas</a></li>
+                        <li><a href="/chocolateria" class="drop-text">Chocolatería</a></li>
+                        <li><a href="/panaderia" class="drop-text">Panadería</a></li>
+                        <li><a href="/cajas" class="drop-text">Cajas</a></li>
+                        <li><a href="/pascuas" class="drop-text">Pascuas</a></li>
+                        <li><a href="/especiales" class="drop-text">Especiales</a></li>
+                    </ul>
+                </li>
+                <li><a href="recetas">Recetas</a></li>
+                <li><a href="contacto">Contacto</a></li>
+
+                <li class="social-icons ml-lg-3"><a href="https://www.facebook.com/BmrCakes15/" class="p-0 social-icon"><span class="fa fa-facebook-official" aria-hidden="true"></span>
+                        <div class="tooltip">Facebook</div>
+                    </a> </li>
+
+                <li class="social-icons"><a href="https://www.instagram.com/bmrcakes/?hl=es-la" class="p-0 social-icon"><span class="fa fa-instagram" aria-hidden="true"></span>
+                        <div class="tooltip">Instagram</div>
+                    </a> </li>
+        </ul>
+    </nav>
+<!-- //nav -->
+</header>
+
+<!--/breadcrumb-->
+<div class="inner-w3pvt-page-info">
+    <ol class="breadcrumb d-flex">
+        <li class="breadcrumb-item">
+            <a href="/home">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Pascuas</li>
+    </ol>
+
+</div>
+<!--//breadcrumb-->
+
+</div>
+<!-- //top-nav -->
+
+    </div>
+</div>
+<!-- //home -->
+
+    <section class="team py-5" id="appointment">
+        <div class="container py-md-5">
+            <h3 class="tittle-w3ls mb-5 text-center" style="font-family: sacramento;">Pascuas</h3>
+            <div class="row productorow mt-lg-5 mt-4">
+                    {{#each productos}}
+
+                <div class="productocolumn col-md-4 text-center">
+                    <div class="team-gd">
+                        <img src="{{imagen}}" alt="productoimage" style="width: 328px; height: 394px">
+                    </div>
+                    <div class="team-info">
+                        <h3>{{nombre}}</h3>
+                        <p>{{descripcion}}</p>
+                    </div>
+                </div>
+
+                    {{/each}}
+            </div>
+        </div>
+    </section>
+
+</body>
