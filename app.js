@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 const home = require('./routes/home');
 const about = require('./routes/about');
 const contacto = require('./routes/contacto');
