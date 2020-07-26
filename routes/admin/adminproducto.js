@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { getProducts, create, update } = require("./../../models/producto");
+const { getProducts, getProduct, create, update } = require("./../../models/producto");
 const { getCategories } = require("./../../models/categoria");
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('adminproducto', { title: 'BMR Cakes' });
+/* Cargar todos los productos en la página */
+router.get("/", async (req, res) => {
+  try {
+    const productos = await getProducts();
+    console.log(productos);
+    res.render("adminproducto", { productos });
+  } catch (error) {}
 });
-
+/* Publicar productos */
 module.exports = router;

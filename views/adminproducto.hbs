@@ -75,9 +75,9 @@
                 <div class="inner-w3pvt-page-info">
                     <ol class="breadcrumb d-flex">
                         <li class="breadcrumb-item">
-                            <a href="home">Home</a>
+                            <a href="home"></a>
                         </li>
-                        <li class="breadcrumb-item active">Producto Admin</li>
+                        <li class="breadcrumb-item active">Vista de administrador</li>
                     </ol>
 
                 </div>
@@ -88,14 +88,43 @@
     </div>
     <!-- //home -->
 
-    <div class="container p-md-5">
-        <a class="btn more black" href="" role="button">Alta de producto</a> 
+    <div class="container p-md-4">
+        <a class="btn more black" href="" role="button">Alta de producto</a>
+        {{!-- <a class="btn more black" href="" role="button" style="margin: 3em;">Alta de producto</a>   --}}
     </div>
    
     <section >
-        <div class="container p-md-5" style="margin-top: 0em;">
-            <h3 class="tittle-w3ls text-center" style="font-weight: lighter;">Vista de productos</h3>
-            
+        <div class="container p-md-2" style="margin-top: 0em;">
+            <h4 class="tittle-w3ls text-center" style="font-weight: lighter;">Vista de productos</h4>
+                        <table class="table table-hover table-responsive mt-3 text-center">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Imagen</th>
+                        <th>Precio</th>
+                        <th>Categoria</th>
+                        <th></th>
+                        <th></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each productos}}
+                    <tr>
+                        <td>{{nombre}}</td>
+                        <td>{{descripcion}}</td>
+                        <td><img src="{{imagen}}" style="width:100px; height:auto"></td>
+                        <td>${{precio}}</td>
+                        <td>{{categoria}}</td>
+                        <td><p class="text-primary">Modificar</p></td>
+                        {{!-- /admin/productos/baja/4 --}}
+                        <td><a href="/admin/productos/baja/{{id}}"><p class="text-danger" style="cursor: pointer;">Eliminar</p></a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
     </section>
  

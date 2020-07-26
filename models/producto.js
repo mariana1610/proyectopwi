@@ -2,12 +2,28 @@ const pool = require('./../utils/bd');
 
 const getProducts = async () => {
     try {
-        const query = "SELECT id_producto, nombre, descripcion, precio, categoria, imagen FROM ??";
-        const rows = await pool.query(query, process.env.TABLA_PRODUCTO);
-        return rows; 
+        const query = 
+        "SELECT id_producto, nombre, descripcion, precio, categoria, imagen FROM ??";
+        const rows = await pool.query(query, [
+        process.env.TABLA_PRODUCTO,
+        process.env.TABLA_CATEGORIAS,
+      ]);
+      return rows; 
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
+};
+
+const getProduct = async (id) => {
+  try {
+    const query =
+      "SELECT id, nombre, descripcion ,precio , imagen FROM ?? WHERE id = ?";
+    const params = [process.env.TABLA_PRODUCTO, id];
+    const rows = await pool.query(query, params);
+    return rows[0];
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getTorta = async () => {
@@ -72,6 +88,7 @@ const getEspeciales = async () => {
 
 module.exports = {
     getProducts,
+    getProduct,
     getTorta,
     getChocolateria,
     getPanaderia,
