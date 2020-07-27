@@ -37,7 +37,7 @@
             </h1>
         </div>
 
-        <label for="drop" class="toggle">Menu</label>
+        {{!-- <label for="drop" class="toggle">Menu</label>
             <input type="checkbox" id="drop" />
             <ul class="menu mr-auto">
                 <li class="active"><a href="home">Home</a></li>
@@ -57,15 +57,7 @@
                 </li>
                 <li><a href="recetas">Recetas</a></li>
                 <li><a href="contacto">Contacto</a></li>
-
-                <li class="social-icons ml-lg-3"><a href="https://www.facebook.com/BmrCakes15/" class="p-0 social-icon"><span class="fa fa-facebook-official" aria-hidden="true"></span>
-                        <div class="tooltip">Facebook</div>
-                    </a> </li>
-
-                <li class="social-icons"><a href="https://www.instagram.com/bmrcakes/?hl=es-la" class="p-0 social-icon"><span class="fa fa-instagram" aria-hidden="true"></span>
-                        <div class="tooltip">Instagram</div>
-                    </a> </li>
-        </ul>
+            </ul> --}}
     </nav>
 <!-- //nav -->
 </header>
@@ -75,7 +67,7 @@
                 <div class="inner-w3pvt-page-info">
                     <ol class="breadcrumb d-flex">
                         <li class="breadcrumb-item">
-                            <a href="home"></a>
+                            <a>BMR Cakes</a>
                         </li>
                         <li class="breadcrumb-item active">Vista de administrador</li>
                     </ol>
@@ -117,9 +109,8 @@
                         <td>{{descripcion}}</td>
                         <td><img src="{{imagen}}" style="width:100px; height:auto"></td>
                         <td>${{precio}}</td>
-                        <td>{{categoria}}</td>
-                        <td><p class="text-primary">Modificar</p></td>
-                        {{!-- /admin/productos/baja/4 --}}
+                        <td>{{nombre_categoria}}</td>
+                        <td><a href="/admin/productos/modificar/{{id}}"><p class="text-primary">Modificar</p></a></td>
                         <td><a href="/admin/productos/baja/{{id}}"><p class="text-danger" style="cursor: pointer;">Eliminar</p></a></td>
                     </tr>
                     {{/each}}
@@ -128,9 +119,6 @@
         </div>
     </section>
  
-
-
-
 </body>
 
 </html>

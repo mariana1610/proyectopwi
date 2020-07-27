@@ -3,10 +3,10 @@ const pool = require('./../utils/bd');
 const getProducts = async () => {
     try {
         const query = 
-        "SELECT id_producto, nombre, descripcion, precio, categoria, imagen FROM ??";
+        "SELECT id_producto, producto.nombre, producto.descripcion, producto.precio, categoria.nombre as nombre_categoria, producto.imagen FROM ?? JOIN ?? ON producto.categoria = categoria.id_categoria";
         const rows = await pool.query(query, [
         process.env.TABLA_PRODUCTO,
-        process.env.TABLA_CATEGORIAS,
+        process.env.TABLA_CATEGORIA,
       ]);
       return rows; 
     } catch (error) {
