@@ -1,12 +1,18 @@
 const express = require('express');
+const session = require("express-session");
 const router = express.Router();
 const { getProducts, getProduct, create, update } = require("./../../models/producto");
 const { getCategories } = require("./../../models/categoria");
 
 /* Alta de productos */
 router.get("/alta", async (req, res) => {
+  if(req.session.administrador){
   const categoria = await getCategories();
   res.render("altaproducto", { categoria }); // categorias
+  }
+  else{
+    res.send("No tiene permisos para ingresar.")
+  }
 });
 
 router.post("/alta", async (req, res) => {
@@ -29,11 +35,15 @@ router.post("/alta", async (req, res) => {
 
 /* Cargar todos los productos en la página */
 router.get("/", async (req, res) => {
+  if(req.session.administrador){
   try {
     const productos = await getProducts();
-    // console.log(productos);
     res.render("adminproducto", { productos });
   } catch (error) {}
+  }
+  else{
+    res.send("No tiene permisos para ingresar.")
+  }
 });
 
 module.exports = router;
