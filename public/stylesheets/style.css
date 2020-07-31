@@ -651,7 +651,7 @@ li>a:only-child:after {
 }
 
 .btn {
-    border: 2px solid #fff;
+    border: 2px solid rgb(224, 224, 224);
     padding: 11px 30px;
     color: #fff;
     font-size: 16px;
@@ -661,7 +661,29 @@ li>a:only-child:after {
 
 }
 
+.btn-sec {
+    border: 2px solid rgb(224, 224, 224);
+    padding: 11px 30px;
+    color: rgb(39, 39, 39);
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    display: inline-block;
+
+}
+
 .btn:hover {
+    background: rgb(218, 129, 178);
+    border: 2px solid rgb(218, 129, 178);
+    color: #333;
+    transition: .5s ease-in;
+    -webkit-transition: .5s ease-in;
+    -moz-transition: .5s ease-in;
+    -o-transition: .5s ease-in;
+    -ms-transition: .5s ease-in;
+}
+
+.btn-sec:hover {
     background: rgb(218, 129, 178);
     border: 2px solid rgb(218, 129, 178);
     color: #333;

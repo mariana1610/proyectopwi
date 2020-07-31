@@ -32,32 +32,11 @@
 <!-- nav -->
     <nav class="wthree-w3ls">
         <div id="logo">
-            <h1> <a class="navbar-brand1 px-0 mx-0" style="text-transform:capitalize" href="home">Bmr Cakes
+            <h1> <a class="navbar-brand1 px-0 mx-0" style="text-transform:capitalize" href="/home">Bmr Cakes
                 </a>
             </h1>
         </div>
 
-        {{!-- <label for="drop" class="toggle">Menu</label>
-            <input type="checkbox" id="drop" />
-            <ul class="menu mr-auto">
-                <li class="active"><a href="home">Home</a></li>
-                <li><a href="/about">Sobre mí</a></li>
-                <li>
-                    <label for="drop-2" class="toggle toggle-2">Productos <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                    <a href="productos">Productos  <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                    <input type="checkbox" id="drop-2" />
-                    <ul>
-                        <li><a href="/tortas" class="drop-text">Tortas</a></li>
-                        <li><a href="/chocolateria" class="drop-text">Chocolatería</a></li>
-                        <li><a href="/panaderia" class="drop-text">Panadería</a></li>
-                        <li><a href="/cajas" class="drop-text">Cajas</a></li>
-                        <li><a href="/pascuas" class="drop-text">Pascuas</a></li>
-                        <li><a href="/especiales" class="drop-text">Especiales</a></li>
-                    </ul>
-                </li>
-                <li><a href="recetas">Recetas</a></li>
-                <li><a href="contacto">Contacto</a></li>
-            </ul> --}}
     </nav>
 <!-- //nav -->
 </header>
@@ -69,7 +48,7 @@
                         <li class="breadcrumb-item">
                             <a>BMR Cakes</a>
                         </li>
-                        <li class="breadcrumb-item active">Vista de administrador</li>
+                        <li class="breadcrumb-item active">Panel de administrador</li>
                     </ol>
 
                 </div>
@@ -81,7 +60,7 @@
     <!-- //home -->
 
     <div class="container p-md-4">
-        <a class="btn more black" href="" role="button">Alta de producto</a>
+        <a class="btn more black" href="/admin/adminproducto/alta" role="button">Alta de producto</a>
         {{!-- <a class="btn more black" href="" role="button" style="margin: 3em;">Alta de producto</a>   --}}
     </div>
    
@@ -92,14 +71,12 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Descripcion</th>
+                        <th>Descripción</th>
                         <th>Imagen</th>
                         <th>Precio</th>
-                        <th>Categoria</th>
+                        <th>Categoría</th>
                         <th></th>
                         <th></th>
-
-
                     </tr>
                 </thead>
                 <tbody>

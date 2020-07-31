@@ -86,6 +86,13 @@ const getEspeciales = async () => {
   }
 };
 
+const create = async (obj) => {
+  const query = "INSERT INTO ?? SET ?";
+  const params = [process.env.TABLA_PRODUCTO, obj];
+  const rows = await pool.query(query, params);
+  return rows.insertId; 
+};
+
 module.exports = {
     getProducts,
     getProduct,
@@ -94,6 +101,7 @@ module.exports = {
     getPanaderia,
     getCajas,
     getPascuas,
-    getEspeciales
+    getEspeciales,
+    create,
 };
 
