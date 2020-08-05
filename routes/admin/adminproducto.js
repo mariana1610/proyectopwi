@@ -4,6 +4,21 @@ const router = express.Router();
 const { getProducts, getProduct, create, update } = require("./../../models/producto");
 const { getCategories } = require("./../../models/categoria");
 
+/* Baja de productos */
+router.get("/baja/:id", async (req, res) => {
+  if(req.session.administrador){
+  try {
+    const { id } = req.params;
+    const result = await update(id, { status: 0 });
+    res.redirect("/admin/adminproducto");
+  } catch (error) {}
+  }
+  else{
+    res.send("no tenes permisos para ingresar")
+  }
+ 
+});
+
 /* Alta de productos */
 router.get("/alta", async (req, res) => {
   if(req.session.administrador){

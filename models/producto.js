@@ -3,7 +3,7 @@ const pool = require('./../utils/bd');
 const getProducts = async () => {
     try {
         const query = 
-        "SELECT id_producto, producto.nombre, producto.descripcion, producto.precio, categoria.nombre as nombre_categoria, producto.imagen FROM ?? JOIN ?? ON producto.categoria = categoria.id_categoria";
+        "SELECT id_producto, producto.nombre, producto.descripcion, producto.precio, categoria.nombre as nombre_categoria, producto.imagen FROM ?? JOIN ?? ON producto.categoria = categoria.id_categoria where status = 1";
         const rows = await pool.query(query, [
         process.env.TABLA_PRODUCTO,
         process.env.TABLA_CATEGORIA,
@@ -17,7 +17,7 @@ const getProducts = async () => {
 const getProduct = async (id) => {
   try {
     const query =
-      "SELECT id, nombre, descripcion ,precio , imagen FROM ?? WHERE id = ?";
+      "SELECT id_producto, nombre, descripcion, precio , imagen FROM ?? WHERE id_producto = ?";
     const params = [process.env.TABLA_PRODUCTO, id];
     const rows = await pool.query(query, params);
     return rows[0];
@@ -93,6 +93,14 @@ const create = async (obj) => {
   return rows.insertId; 
 };
 
+const update = async (id, obj) => {
+  console.log("Se actualizara el id : ", id);
+  console.log(obj);
+  const query = "UPDATE ?? SET ? where id_producto = ?";
+  const params = [process.env.TABLA_PRODUCTO, obj, id];
+  return await pool.query(query, params);
+};
+
 module.exports = {
     getProducts,
     getProduct,
@@ -103,5 +111,6 @@ module.exports = {
     getPascuas,
     getEspeciales,
     create,
+    update,
 };
 
