@@ -16,14 +16,31 @@ router.get("/baja/:id", async (req, res) => {
   else{
     res.send("no tenes permisos para ingresar")
   }
- 
+});
+
+/* Modificar productos */
+router.get("/modificar/:id", async (req, res) => {
+  if(req.session.administrador){
+  const categoria = await getCategories();
+  const producto = await getProduct();
+  res.render("editproducto", { categoria, producto }); 
+  }
+  else{
+    res.send("No tiene permisos para ingresar.")
+  }
+});
+
+router.put("/modificar/:id", (req, res) => {
+  console.log(req.params.id);
+  console.log(req.body);
+  res.json({ status: true });
 });
 
 /* Alta de productos */
 router.get("/alta", async (req, res) => {
   if(req.session.administrador){
   const categoria = await getCategories();
-  res.render("altaproducto", { categoria }); // categorias
+  res.render("altaproducto", { categoria }); 
   }
   else{
     res.send("No tiene permisos para ingresar.")
