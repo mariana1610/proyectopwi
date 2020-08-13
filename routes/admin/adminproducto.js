@@ -22,17 +22,17 @@ router.get("/baja/:id", async (req, res) => {
 
 /* Modificar productos */
 router.get("/modificar/:id", async (req, res) => {
-  //   if(req.session.administrador){
+  if(req.session.administrador){
   try {
      const categoria = await getCategories();
      const { id } = req.params;
      const product = await getProduct (id);
      res.render("editproducto", { product : product, categoria : categoria }); 
   } catch (error) {}
-  //   }
-  //   else{
-  //     res.send("No tiene permisos para ingresar.")
-  //   }
+    }
+    else{
+      res.send("No tiene permisos para ingresar.")
+    }
   });
 
 router.post("/modificar/:id", async (req, res) => {
@@ -40,35 +40,17 @@ router.post("/modificar/:id", async (req, res) => {
     const { id } = req.params;
     const { nombre, descripcion, categoria, precio, descuento } = req.body;
     const obj = {
-            nombre: nombre,
-            descripcion: descripcion,
-            categoria: parseInt(categoria),
-            precio: precio,
-            descuento: descuento,
-            };
+        nombre: nombre,
+        descripcion: descripcion,
+        categoria: parseInt(categoria),
+        precio: precio,
+        descuento: descuento,
+        };
     console.log(obj);
     const result = await update (id, obj);
     res.redirect("/admin/adminproducto");
   } catch (error) {}
 });
-
-// router.put("/modificar/:id", async (req, res) => {
-//   try {
-//     const { nombre, descripcion, categoria, precio, descuento } = req.body;
-//     const obj = {
-//       nombre: nombre,
-//       descripcion: descripcion,
-//       categoria: parseInt(categoria),
-//       precio: precio,
-//       descuento: descuento,
-//     };
-//     const result = await update(obj);
-//     console.log(`El insert id retornado es : ${result}`);
-//     res.render("editproducto", { message: "Producto modificado con éxito." });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
 
 /* Alta de productos */
 router.get("/alta", async (req, res) => {
