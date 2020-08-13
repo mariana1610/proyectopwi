@@ -101,6 +101,7 @@ const update = async (id, obj) => {
   return await pool.query(query, params);
 };
 
+
 module.exports = {
     getProducts,
     getProduct,
