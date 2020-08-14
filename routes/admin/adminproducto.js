@@ -5,6 +5,10 @@ const { getProducts, getProduct, create, update } = require("./../../models/prod
 const { getCategories } = require("./../../models/categoria");
 const pool = require('../../utils/bd');
 const categoria = require('./../../models/categoria');
+const imgHandler = require('./../../utils/imageHandler');
+const multer = require('multer');
+const config = { dest: "./public/tmp" };
+const upload = multer(config);
 
 /* Baja de productos */
 router.get("/baja/:id", async (req, res) => {
@@ -52,6 +56,56 @@ router.post("/modificar/:id", async (req, res) => {
   } catch (error) {}
 });
 
+/* Seleccionar imagen */
+router.get("/imagen/:id", async (req, res) => {
+  // if(req.session.administrador){
+  try {
+     const categoria = await getCategories();
+     const { id } = req.params;
+     const product = await getProduct (id);
+     res.render("adminimagen", { product : product, categoria : categoria }); 
+  } catch (error) {}
+    // }
+    // else{
+    //   res.send("No tiene permisos para ingresar.")
+    // }
+  });
+
+router.post('/imagen/:id', upload.single("imagen"), async (req, res) => {
+  try {
+      const { id } = req.params;
+      console.log(req.body);
+      console.log(req.file);
+      const img = imgHandler.saveImage(req.file);
+      console.log(`La imagen se guardo como ${img}`);
+      const objimagen = {
+        imagen : img
+      };
+      await update (id, objimagen)
+      res.redirect("/admin/adminproducto");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// files.single o upload.single
+// router.post("/imagen/:id", files.single("imagen"), async (req, res) => {
+//   try {
+//   console.log(req.files);
+//   const { nombre } = req.body;
+//   const img = imgHandler.saveImage(req.file);
+//   console.log(`La imagen se guardo como ${img}`);
+//   const obj = {
+//     nombre,
+//     imagen: img,
+//   };
+//   await service.add(obj);
+//   res.send();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+
 /* Alta de productos */
 router.get("/alta", async (req, res) => {
   if(req.session.administrador){
@@ -93,5 +147,6 @@ router.get("/", async (req, res) => {
     res.send("No tiene permisos para ingresar.")
   }
 });
+
 
 module.exports = router;
