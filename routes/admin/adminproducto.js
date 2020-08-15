@@ -58,17 +58,17 @@ router.post("/modificar/:id", async (req, res) => {
 
 /* Seleccionar imagen */
 router.get("/imagen/:id", async (req, res) => {
-  // if(req.session.administrador){
+  if(req.session.administrador){
   try {
      const categoria = await getCategories();
      const { id } = req.params;
      const product = await getProduct (id);
      res.render("adminimagen", { product : product, categoria : categoria }); 
   } catch (error) {}
-    // }
-    // else{
-    //   res.send("No tiene permisos para ingresar.")
-    // }
+    }
+    else{
+      res.send("No tiene permisos para ingresar.")
+    }
   });
 
 router.post('/imagen/:id', upload.single("imagen"), async (req, res) => {
